@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Dark mode: flip the neutral scale so existing neutral-* / white classes adapt automatically */
+.dark {
+  color-scheme: dark;
+  --color-white: oklch(18% 0 0);
+  --color-neutral-50: oklch(14.5% 0 0);
+  --color-neutral-100: oklch(20.5% 0 0);
+  --color-neutral-200: oklch(26.9% 0 0);
+  --color-neutral-300: oklch(37.1% 0 0);
+  --color-neutral-400: oklch(43.9% 0 0);
+  --color-neutral-500: oklch(70.8% 0 0);
+  --color-neutral-600: oklch(87% 0 0);
+  --color-neutral-700: oklch(92.2% 0 0);
+  --color-neutral-800: oklch(97% 0 0);
+  --color-neutral-900: oklch(98.5% 0 0);
+  --color-neutral-950: oklch(100% 0 0);
+}

@@ -1,0 +1,95 @@
+---
+const links = [
+	{ href: '#projects', label: 'Projects' },
+	{ href: '#work', label: 'Work' },
+	{ href: '#about', label: 'About' },
+	{ href: '#contact', label: 'Contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-neutral-50/80 backdrop-blur">
+	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+		<a href="/" class="text-lg font-bold tracking-tight">Rahmat Tomy</a>
+		<div class="flex items-center gap-3 md:gap-6">
+			<ul class="hidden items-center gap-6 text-sm font-medium md:flex">
+				{links.map((link) => (
+					<li>
+						<a href={link.href} class="text-neutral-600 transition-colors hover:text-neutral-900">
+							{link.label}
+						</a>
+					</li>
+				))}
+			</ul>
+			<button
+				id="theme-toggle"
+				type="button"
+				aria-label="Toggle dark mode"
+				class="grid size-9 place-items-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-900"
+			>
+				<!-- moon (shown in light mode) -->
+				<svg class="size-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+				</svg>
+				<!-- sun (shown in dark mode) -->
+				<svg class="hidden size-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<circle cx="12" cy="12" r="4" />
+					<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+				</svg>
+			</button>
+			<button
+				id="menu-toggle"
+				type="button"
+				aria-label="Open menu"
+				aria-expanded="false"
+				aria-controls="mobile-menu"
+				class="group grid size-9 place-items-center rounded-full border border-neutral-200 text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-900 md:hidden"
+			>
+				<span class="relative block h-3 w-4" aria-hidden="true">
+					<span class="absolute top-0 left-0 h-0.5 w-full rounded bg-current transition-transform duration-300 group-aria-expanded:translate-y-1.25 group-aria-expanded:rotate-45"></span>
+					<span class="absolute top-1.25 left-0 h-0.5 w-full rounded bg-current transition-opacity duration-300 group-aria-expanded:opacity-0"></span>
+					<span class="absolute bottom-0 left-0 h-0.5 w-full rounded bg-current transition-transform duration-300 group-aria-expanded:-translate-y-1.25 group-aria-expanded:-rotate-45"></span>
+				</span>
+			</button>
+		</div>
+	</nav>
+
+	<div id="mobile-menu" class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 md:hidden" data-open="false">
+		<ul class="overflow-hidden px-6 text-base font-medium">
+			{links.map((link) => (
+				<li class="border-t border-neutral-200 first:border-t-0">
+					<a href={link.href} class="block py-3 text-neutral-600 transition-colors hover:text-neutral-900">
+						{link.label}
+					</a>
+				</li>
+			))}
+		</ul>
+	</div>
+</header>
+
+<script>
+	document.getElementById('theme-toggle')?.addEventListener('click', () => {
+		const isDark = document.documentElement.classList.toggle('dark');
+		try {
+			localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		} catch {}
+	});
+
+	const menuToggle = document.getElementById('menu-toggle');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	const setMenu = (open: boolean) => {
+		if (!menuToggle || !mobileMenu) return;
+		menuToggle.setAttribute('aria-expanded', String(open));
+		menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+		mobileMenu.classList.toggle('grid-rows-[1fr]', open);
+		mobileMenu.classList.toggle('pb-3', open);
+		mobileMenu.classList.toggle('grid-rows-[0fr]', !open);
+		mobileMenu.inert = !open;
+	};
+
+	setMenu(false);
+	menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
+	mobileMenu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+	document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
+	matchMedia('(min-width: 48rem)').addEventListener('change', (e) => e.matches && setMenu(false));
+</script>

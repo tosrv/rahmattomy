@@ -1,0 +1,72 @@
+---
+const stack = ['Express.js', 'React.js', 'Next.js', 'PostgreSQL'];
+const socials = [
+	{ href: 'https://github.com/tosrv', label: 'GitHub' },
+	{ href: 'https://linkedin.com/in/rahmattomy', label: 'LinkedIn' },
+	{ href: 'mailto:me@rahmattomy.com', label: 'Email' },
+];
+---
+
+<section id="hero" class="mx-auto flex max-w-6xl flex-col items-center px-6 pt-20 pb-28 text-center md:pt-32">
+	<div class="flex flex-col items-center">
+		<p class="text-lg text-neutral-500">Hi, I am</p>
+		<h1 class="mt-1 text-5xl leading-[1.05] font-bold tracking-tight md:text-7xl">
+			Rahmat Tomy Apriliyanto
+		</h1>
+
+		<p class="mt-5 text-md font-medium">
+			Full Stack Developer
+			<span class="mx-2 text-neutral-300">|</span>
+			<span class="text-neutral-600">{stack.join(' · ')}</span>
+		</p>
+
+		<p class="mt-6 max-w-xl text-neutral-600 italic">
+			“Focused on building clean, practical web applications with modern frontend and backend technologies while continuously learning and growing.”
+		</p>
+
+		<p class="mt-6 flex flex-wrap items-center justify-center gap-x-2 text-sm text-neutral-500">
+			<span>Jakarta Selatan, Indonesia</span>
+			<span>·</span>
+			<span>UTC+7</span>
+			<span>·</span>
+			<time id="wib-clock" class="font-medium text-neutral-700 tabular-nums">--:--:--</time>
+		</p>
+
+		<div class="mt-10 flex flex-wrap justify-center gap-4">
+			<a href="#work" class="rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-neutral-700">
+				View Projects
+			</a>
+			<a href="https://github.com/tosrv" target="_blank" rel="noopener noreferrer" class="group px-4 py-2 font-medium">
+				<span class="relative after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 group-hover:after:scale-x-100">
+					Download CV
+				</span>
+			</a>
+		</div>
+
+		<ul class="mt-8 flex justify-center gap-6 text-sm font-medium">
+			{socials.map((s) => (
+				<li>
+					<a href={s.href} target="_blank" rel="noopener noreferrer" class="text-neutral-500 underline-offset-4 transition hover:text-neutral-900 hover:underline">
+						{s.label}
+					</a>
+				</li>
+			))}
+		</ul>
+	</div>
+</section>
+
+<script>
+	const el = document.getElementById('wib-clock');
+	const fmt = new Intl.DateTimeFormat('en-GB', {
+		timeZone: 'Asia/Jakarta',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit',
+		hour12: false,
+	});
+	const tick = () => {
+		if (el) el.textContent = fmt.format(new Date());
+	};
+	tick();
+	setInterval(tick, 1000);
+</script>

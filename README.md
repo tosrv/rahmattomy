@@ -1,43 +1,68 @@
-# Astro Starter Kit: Minimal
+# Rahmat Tomy — Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Personal portfolio website of **Rahmat Tomy Apriliyanto**, Full Stack Developer based in Jakarta, Indonesia.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com).
 
-## 🚀 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+- Single-page layout: Hero → Projects → Work → About → Contact
+- Dark mode toggle that follows the system preference and remembers the visitor's choice
+- Responsive navbar with an animated burger menu on mobile
+- Live local clock (WIB / UTC+7) in the hero
+- Content kept in plain TypeScript data files for easy editing
+- SEO basics: meta/Open Graph tags, canonical URL, and an auto-generated sitemap
+- Self-hosted [Satoshi](https://www.fontshare.com/fonts/satoshi) font
+
+## Project Structure
 
 ```text
 /
 ├── public/
+│   ├── favicon.svg
+│   └── fonts/              # Satoshi .woff2 files
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/         # Navbar, Hero, Projects, Work, About, Contact, Footer
+│   ├── data/
+│   │   ├── experience.ts   # Work experience entries
+│   │   └── projects.ts     # Project cards
+│   ├── layouts/
+│   │   └── Layout.astro    # <head>, SEO tags, theme init script
+│   ├── pages/
+│   │   └── index.astro     # Homepage
+│   └── styles/
+│       └── global.css      # Tailwind, fonts, dark mode palette
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Requires **Node.js 22.12+**.
 
-Any static assets, like images, can be placed in the `public/` directory.
+```sh
+npm install
+npm run dev
+```
 
-## 🧞 Commands
+The dev server runs at `http://localhost:4321`.
 
-All commands are run from the root of the project, from a terminal:
+## Commands
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Install dependencies                         |
+| `npm run dev`     | Start the local dev server                   |
+| `npm run build`   | Build the production site to `./dist/`       |
+| `npm run preview` | Preview the production build locally         |
 
-## 👀 Want to learn more?
+## Editing Content
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Projects** — edit `src/data/projects.ts`
+- **Work experience** — edit `src/data/experience.ts`
+- **Hero, About, Contact, Footer text and links** — edit the matching file in `src/components/`
+- **Site URL** (used for the sitemap and canonical links) — set `site` in `astro.config.mjs`
+
+## Dark Mode
+
+Dark mode is class-based (`.dark` on `<html>`). In `src/styles/global.css` the `neutral-*` and `white` colors are flipped under `.dark`, so components using those colors adapt automatically. For any other color, add a `dark:` variant.
