@@ -24,6 +24,7 @@ Built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcs
 ├── src/
 │   ├── components/         # Navbar, Hero, Projects, Work, About, Contact, Footer
 │   ├── data/
+│   │   ├── site.ts         # Profile, SEO, nav, socials, section text
 │   │   ├── experience.ts   # Work experience entries
 │   │   └── projects.ts     # Project cards
 │   ├── layouts/
@@ -58,9 +59,11 @@ The dev server runs at `http://localhost:4321`.
 
 ## Editing Content
 
+All content lives in `src/data/` — components only handle layout.
+
+- **Profile, SEO, nav, socials, Hero, About, Contact, Footer, section titles** — edit `src/data/site.ts`
 - **Projects** — edit `src/data/projects.ts`
 - **Work experience** — edit `src/data/experience.ts`
-- **Hero, About, Contact, Footer text and links** — edit the matching file in `src/components/`
 - **Site URL** (used for the sitemap and canonical links) — set `site` in `astro.config.mjs`
 
 ## Dark Mode

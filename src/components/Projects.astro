@@ -1,10 +1,11 @@
 ---
 import { projects } from '../data/projects';
+import { projectsSection } from '../data/site';
 ---
 
 <section id="projects" class="scroll-mt-20">
 	<div class="mx-auto max-w-6xl px-6 py-24">
-		<h2 class="mb-12 text-3xl font-bold tracking-tight md:text-4xl">Selected Projects</h2>
+		<h2 class="mb-12 text-3xl font-bold tracking-tight md:text-4xl">{projectsSection.title}</h2>
 		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 			{projects.map((project) => {
 				const Tag = project.href ? 'a' : 'div';

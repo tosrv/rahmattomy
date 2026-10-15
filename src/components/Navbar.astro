@@ -1,15 +1,10 @@
 ---
-const links = [
-	{ href: '#projects', label: 'Projects' },
-	{ href: '#work', label: 'Work' },
-	{ href: '#about', label: 'About' },
-	{ href: '#contact', label: 'Contact' },
-];
+import { navLinks as links, profile } from '../data/site';
 ---
 
 <header class="sticky top-0 z-50 bg-neutral-50/80 backdrop-blur">
 	<nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-		<a href="/" class="text-lg font-bold tracking-tight">Rahmat Tomy</a>
+		<a href="/" class="text-lg font-bold tracking-tight">{profile.shortName}</a>
 		<div class="flex items-center gap-3 md:gap-6">
 			<ul class="hidden items-center gap-6 text-sm font-medium md:flex">
 				{links.map((link) => (

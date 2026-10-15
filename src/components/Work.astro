@@ -1,10 +1,11 @@
 ---
 import { experience } from '../data/experience';
+import { workSection } from '../data/site';
 ---
 
 <section id="work" class="scroll-mt-20">
 	<div class="mx-auto max-w-6xl px-6 py-24">
-		<h2 class="mb-12 text-3xl font-bold tracking-tight md:text-4xl">Work Experience</h2>
+		<h2 class="mb-12 text-3xl font-bold tracking-tight md:text-4xl">{workSection.title}</h2>
 		<ol class="space-y-12">
 			{experience.map((job) => (
 				<li class="grid gap-4 md:grid-cols-[1fr_3fr] md:gap-12">
@@ -16,7 +17,7 @@ import { experience } from '../data/experience';
 						<div class="flex flex-wrap items-center gap-x-3 gap-y-2">
 							<h3 class="text-xl font-bold">{job.company}</h3>
 							{job.current && (
-								<span class="rounded-full bg-neutral-900 px-2.5 py-0.5 text-xs font-medium text-white">Current</span>
+								<span class="rounded-full bg-neutral-900 px-2.5 py-0.5 text-xs font-medium text-white">{workSection.currentLabel}</span>
 							)}
 						</div>
 						<p class="mt-1 text-neutral-600">{job.role}</p>

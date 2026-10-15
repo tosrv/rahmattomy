@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { seo } from '../data/site';
 
 interface Props {
 	title?: string;
@@ -7,8 +8,8 @@ interface Props {
 }
 
 const {
-	title = 'Rahmat Tomy',
-	description = 'Portfolio of Rahmat Tomy.',
+	title = seo.title,
+	description = seo.description,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---

@@ -1,15 +1,14 @@
 ---
-const skills = ['Astro', 'TypeScript', 'Tailwind CSS', 'React', 'UI Design', 'Figma'];
+import { about } from '../data/site';
 ---
 
 <section id="about" class="scroll-mt-20 border-t border-neutral-200">
 	<div class="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-[1fr_2fr]">
-		<h2 class="text-3xl font-bold tracking-tight md:text-4xl">About</h2>
+		<h2 class="text-3xl font-bold tracking-tight md:text-4xl">{about.title}</h2>
 		<div class="space-y-6 text-lg text-neutral-700">
-			<p>A few sentences about your background, experience, and what drives your work.</p>
-			<p>What you're focused on now and the kind of projects you enjoy.</p>
+			{about.paragraphs.map((p) => <p>{p}</p>)}
 			<ul class="flex flex-wrap gap-2 pt-2">
-				{skills.map((skill) => (
+				{about.skills.map((skill) => (
 					<li class="rounded-full border border-neutral-300 px-4 py-1.5 text-sm font-medium">{skill}</li>
 				))}
 			</ul>
