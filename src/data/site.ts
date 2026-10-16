@@ -39,7 +39,7 @@ export const hero = {
 	tagline:
 		'Focused on building clean, practical web applications with modern frontend and backend technologies while continuously learning and growing.',
 	primaryCta: { label: 'View Projects', href: '#projects' },
-	secondaryCta: { label: 'Download CV', href: 'https://github.com/tosrv' },
+	secondaryCta: { label: 'Download CV', href: '/resume/Rahmat%20Tomy%20-%20Full%20Stack%20Developer.pdf' },
 };
 
 export const projectsSection = {
@@ -66,5 +66,5 @@ export const contact = {
 };
 
 export const footer = {
-	copyright: `${profile.shortName}. All rights reserved.`,
+	copyright: `${profile.shortName}`,
 };

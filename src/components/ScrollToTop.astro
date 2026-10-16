@@ -1,0 +1,23 @@
+<button
+	id="scroll-to-top"
+	type="button"
+	aria-label="Scroll to top"
+	class="fixed bottom-6 right-6 z-50 grid size-11 translate-y-4 place-items-center rounded-full bg-neutral-900 text-white opacity-0 shadow-sm transition-all duration-300 pointer-events-none hover:bg-neutral-700 data-[visible=true]:translate-y-0 data-[visible=true]:opacity-100 data-[visible=true]:pointer-events-auto"
+	data-visible="false"
+>
+	<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+		<path d="M12 19V5M5 12l7-7 7 7" />
+	</svg>
+</button>
+
+<script>
+	const button = document.getElementById('scroll-to-top');
+
+	const updateVisibility = () => {
+		button?.setAttribute('data-visible', String(window.scrollY > 400));
+	};
+
+	updateVisibility();
+	document.addEventListener('scroll', updateVisibility, { passive: true });
+	button?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
