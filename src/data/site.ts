@@ -22,7 +22,7 @@ export const profile = {
 
 export const socials: Link[] = [
 	{ label: 'GitHub', href: 'https://github.com/tosrv' },
-	{ label: 'LinkedIn', href: 'https://linkedin.com/in/rahmattomy' },
+	{ label: 'LinkedIn', href: 'https://linkedin.com/in/rahmat-tomy' },
 	{ label: 'Email', href: `mailto:${profile.email}` },
 ];
 
@@ -54,10 +54,10 @@ export const workSection = {
 export const about = {
 	title: 'About',
 	paragraphs: [
-		'A few sentences about your background, experience, and what drives your work.',
-		"What you're focused on now and the kind of projects you enjoy.",
+		"I'm a developer who enjoys understanding how things work and turning ideas into useful software. From frontend interfaces to backend services, ",
+		'I focus on building web applications that are practical, reliable, and easy to maintain while continuously improving my engineering skills.',
 	],
-	skills: ['Astro', 'TypeScript', 'Tailwind CSS', 'React', 'UI Design', 'Figma'],
+	skills: ['JavaScript', 'Git', 'Linux', 'Node.js', 'React.js'],
 };
 
 export const contact = {
